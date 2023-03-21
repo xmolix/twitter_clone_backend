@@ -2,21 +2,39 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "",
+  "author": "xmolix <werewolfct@gmail.com>",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
+    "@types/express-session": "^1.17.6",
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/mongoose": "^5.11.97",
+    "@types/nodemailer": "^6.4.7",
+    "@types/passport": "^1.0.12",
+    "@types/passport-jwt": "^3.0.8",
+    "@types/passport-local": "^1.0.35",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "express-validator": "^6.15.0",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.1",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.21",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "node dist/server.js",
     "dev": "ts-node server.ts",
+    "nodemon": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {}
+  "repository": "https://github.com/xmolix/twitter_clone_backend.git"
 }
