@@ -129,7 +129,7 @@ class UserController {
         }
     }
 
-    async singin(req: express.Request, res: express.Response): Promise<void> {
+    async login(req: express.Request, res: express.Response): Promise<void> {
         try {
             if (req.user && process.env.SECRET_KEY) {
                 const user = (req.user as UserModelDocumentType).toJSON()
