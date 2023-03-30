@@ -6,7 +6,7 @@ export const registerValidations = [
         .isLength({
             min: 9,
             max: 40,
-        }).withMessage("Допустимое кол-во символов в почте от 10 до 40."),
+        }).withMessage("Допустимое кол-во символов в почте от 9 до 40."),
     body("fullName", "Введите имя")
         .isString()
         .isLength({

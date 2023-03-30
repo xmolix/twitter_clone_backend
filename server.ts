@@ -26,8 +26,8 @@ app.get("/users/me", passport.authenticate("jwt", { session: false }), UserCtrl.
 app.get("/users/:id", UserCtrl.show)
 
 app.get("/auth/verify", registerValidations, UserCtrl.verify)
-app.post("/auth/signup", registerValidations, UserCtrl.create)
-app.post("/auth/signin", passport.authenticate("local"), UserCtrl.singin)
+app.post("/auth/sign-up", registerValidations, UserCtrl.create)
+app.post("/auth/sign-in", passport.authenticate("local"), UserCtrl.login)
 // { failureRedirect: '/', failureMessage: true }
 
 app.get("/tweets", TweetCtrl.index)
