@@ -25,7 +25,7 @@ export const registerValidations = [
             min: 8,
         }).withMessage("Минимальная длина пароля 8 символов.")
         .custom((value, { req }) => {
-            if (value !== req.body.repitPassword) {
+            if (value !== req.body.repeatPassword) {
                 throw new Error("Пароли не совпадают.")
             } else {
                 return value
