@@ -5,7 +5,7 @@ import {validationResult} from "express-validator";
 import {UserModelType} from "../models/UserModel";
 
 class TweetController {
-    async index(_: any, res: express.Response): Promise<void> {
+    async index(_: express.Request, res: express.Response): Promise<void> {
         try {
             const tweets = await TweetModel.find({}).populate("user").sort({ "createdAt": -1 }).exec()
 
@@ -77,7 +77,10 @@ class TweetController {
                 })
             }
         } catch (err) {
-
+            res.status(500).json({
+                status: "error",
+                message: err,
+            })
         }
     }
 
