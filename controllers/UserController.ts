@@ -7,7 +7,7 @@ import {sendEmail} from "../utils/sendEmail";
 import {isValidObjectID} from "../utils/isValidObjectID";
 
 class UserController {
-    async index(_: any, res: express.Response): Promise<void> {
+    async index(_: express.Request, res: express.Response): Promise<void> {
         try {
             const users = await UserModel.find({}).exec()
 

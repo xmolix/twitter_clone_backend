@@ -4,14 +4,32 @@ dotenv.config()
 import "./core/db"
 
 import express from "express"
-import { passport } from "./core/passport"
+import multer from "multer";
 import session from "express-session"
+import { passport } from "./core/passport"
 import { UserCtrl } from "./controllers/UserController"
 import { registerValidations } from "./validations/register"
-import {TweetCtrl} from "./controllers/TweetController";
-import {tweetsValidations} from "./validations/tweets";
+import { TweetCtrl } from "./controllers/TweetController";
+import { tweetsValidations } from "./validations/tweets";
+import { UploadFileCtrl } from "./controllers/UploadFileController";
 
 const app = express()
+// const storage = multer.diskStorage({
+//     destination: function (_req: express.Request,
+//                            _file: Express.Multer.File,
+//                            cb: (error: (Error | null), filename: string) => void) {
+//         cb(null, __dirname + "/uploads")
+//     },
+//     filename: function (_req: express.Request,
+//                         file: Express.Multer.File,
+//                         cb: (error: (Error | null), filename: string) => void) {
+//         const exp = file.originalname.split(".").pop()
+//         cb(null, "image-" + Date.now() + "." + exp)
+//     }
+// })
+const storage = multer.memoryStorage()
+const upload = multer({ storage })
+
 
 app.use(express.json())
 app.use(passport.initialize())
@@ -35,6 +53,8 @@ app.post("/tweets", passport.authenticate("jwt"), tweetsValidations, TweetCtrl.c
 app.patch("/tweets/:id", passport.authenticate("jwt"), tweetsValidations, TweetCtrl.update)
 app.get("/tweets/:id", TweetCtrl.show)
 app.delete("/tweets/:id", passport.authenticate("jwt"), TweetCtrl.delete)
+
+app.post("/upload", upload.single("avatar"), UploadFileCtrl.upload)
 
 app.listen(process.env.PORT, (): void => {
    console.log("SERVER IS RUNNING!")
